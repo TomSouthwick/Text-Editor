@@ -6,7 +6,7 @@ window.addEventListener("beforeinstallprompt", (event) => {
   window.deferredPrompt = event;
 
   // Remove the hidden class from the button
-  butInstall.classList.toggle("hidden", false);
+  butInstall.classList.remove("hidden");
 });
 
 butInstall.addEventListener("click", async () => {
@@ -21,10 +21,12 @@ butInstall.addEventListener("click", async () => {
 
   // Reset the deferred prompt variable
   window.deferredPrompt = null;
-  butInstall.classList.toggle("hidden", true);
+  butInstall.classList.add("hidden");
+  //   butInstall.classList.toggle("hidden", true);
 });
 
 window.addEventListener("appinstalled", (event) => {
   // Clear prompt
+  butInstall.classList.add("hidden");
   window.deferredPrompt = null;
 });
